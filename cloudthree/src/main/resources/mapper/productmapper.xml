@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tao.cloudthree.Mapper.Productmapper">
+
+
+    <!--查询-->
+    <select id="selectById" resultType="Product">
+        select * from product where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="Product">
+        insert into product (title,image) values (1,1)
+    </insert>
+
+    <insert id="addproduct" parameterType="Product">
+        insert into product (title,image) values  (#{title},#{image})
+    </insert>
+    <delete id="delete" parameterType="Product">
+        delete from product where 1=1 order by id limit 1000;
+    </delete>
+
+
+    <delete id="deletefirst" parameterType="Product">
+        delete from product limit 1;
+    </delete>
+
+
+    <insert id="addproducts">
+        insert into product (title,image)
+        VALUES
+        <foreach collection="products" item="products" separator=",">
+            (#{products.title},#{products.image})
+        </foreach>
+    </insert>
+
+
+
+
+</mapper>

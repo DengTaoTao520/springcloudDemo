@@ -1,0 +1,10 @@
+# 端口号为8080（默认也是8080）
+server:
+  port: 8084
+# 禁止注册自己
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/

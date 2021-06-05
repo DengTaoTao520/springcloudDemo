@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tao.cloudthree.Mapper.Usermapper">
+
+
+    <!--查询-->
+    <select id="selectById" resultType="User">
+        select * from user where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="User">
+        insert into user (username,password) values (1,1)
+    </insert>
+
+    <insert id="adduser" parameterType="User">
+        insert into user (username,password) values  (#{username},#{password})
+    </insert>
+    <delete id="delete" parameterType="User">
+       delete from user where 1=1 order by id limit 1000;
+    </delete>
+
+
+    <delete id="deletefirst" parameterType="User">
+        delete from user limit 1;
+    </delete>
+
+
+    <insert id="addusers">
+        insert into user (username,password)
+        VALUES
+        <foreach collection="users" item="users" separator=",">
+            (#{users.username},#{users.password})
+        </foreach>
+    </insert>
+
+
+
+
+</mapper>
